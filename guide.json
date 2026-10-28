@@ -1,0 +1,111 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "deeptutor",
+    "nameCn": "DeepTutor",
+    "repoName": "deeptutor-deploy-guide",
+    "oneLiner": "46.3k stars，Apache-2.0，HKUDS 出品的个性化学习工作台，讲题、出卷、研究、可视化一站搞定",
+    "officialRepo": "https://github.com/HKUDS/DeepTutor",
+    "officialDocs": "https://deeptutor.info",
+    "stars": "46.3k",
+    "license": "Apache-2.0",
+    "highlights": [
+      "46.3k stars：2025-12 建仓，不到一年冲到 4.6 万",
+      "一种运行时十种模式：答疑、出题、研究、可视化、解题、精读、音频概览",
+      "知识库多引擎：LlamaIndex、PageIndex、GraphRAG、LightRAG 都能接",
+      "视频学习：YouTube / Bilibili 链接直接播放，字幕搜索与时间戳定位",
+      "可检查的记忆：L1 轨迹、L2 摘要、L3 综合，记忆图谱可编辑",
+      "一条 Docker 命令就能试，不用装 Python 和 Node"
+    ],
+    "mcpSupport": "DeepTutor 支持接入外部 MCP server 作为工具扩展，但它本身不是 MCP server；本仓库只负责部署，不注册 MCP。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-27",
+    "verification": [
+      [
+        "仓库元数据核对：46,341 stars、5,795 forks、Apache-2.0、2025-12-28 建仓",
+        "已核对 2026-10-27"
+      ],
+      [
+        "GitHub Trending 日榜 +1598",
+        "已核对 2026-10-27"
+      ],
+      [
+        "README 确认 Docker 试跑命令与镜像地址 ghcr.io/hkuds/deeptutor:latest",
+        "已核对 2026-10-27"
+      ],
+      [
+        "README 确认端口 3782、数据目录 /app/data、最新 release v1.6.15",
+        "已核对 2026-10-27"
+      ],
+      [
+        "README 确认 PyPI 包名 deeptutor，要求 Python 3.11–3.14 与 Node 20+",
+        "已核对 2026-10-27"
+      ],
+      [
+        "未实测 Docker 启动与模型调用（本机未安装 Docker）",
+        "说明 2026-10-27"
+      ]
+    ],
+    "deploy": {
+      "type": "docker",
+      "steps": [
+        "docker run -d --name deeptutor -p 127.0.0.1:3782:3782 -v deeptutor-data:/app/data ghcr.io/hkuds/deeptutor:latest",
+        "docker ps --filter name=deeptutor",
+        "echo \"部署完成：打开 http://127.0.0.1:3782\""
+      ],
+      "stepsPs": [
+        "docker run -d --name deeptutor -p 127.0.0.1:3782:3782 -v deeptutor-data:/app/data ghcr.io/hkuds/deeptutor:latest",
+        "docker ps --filter name=deeptutor",
+        "Write-Host '部署完成：打开 http://127.0.0.1:3782'"
+      ],
+      "source": "https://github.com/HKUDS/DeepTutor#one-command-docker-trial"
+    },
+    "pitfalls": [
+      "端口冲突：把 `-p 127.0.0.1:3782:3782` 左边改成别的端口",
+      "打开是白屏：先 `docker logs deeptutor` 看后端起没起来",
+      "模型报 401：Base URL 与 Key 不匹配，注意是否要带 `/v1`",
+      "上传 PDF 解析失败：本地解析需要额外装 MinerU，或改用云端解析",
+      "语音转写失败：原生 STT 适配器需要 `ffmpeg` 在 PATH 里",
+      "升级丢数据：命名卷 `deeptutor-data` 不随容器删除，别手动 `docker volume rm`"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/deeptutor-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/deeptutor-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "DeepTutor 部署",
+    "DeepTutor 安装",
+    "AI 学习 工作台",
+    "自托管 学习助手",
+    "AI 出题 讲解",
+    "HKUDS DeepTutor",
+    "知识库 RAG 学习",
+    "Docker 部署 AI",
+    "DeepTutor 中文",
+    "个性化辅导 AI"
+  ],
+  "topics": [
+    "ai-agents",
+    "education",
+    "llm",
+    "rag",
+    "self-hosted",
+    "docker",
+    "python"
+  ]
+}
